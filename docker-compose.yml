@@ -1,0 +1,20 @@
+version: "3"
+services:
+        mysql:
+                image: mysql
+                ports:
+                        - 3307:3307
+                environment:
+                        - MYSQL_ROOT_PASSWORD=sms2851140
+        nginx:
+                image: miviner/nginxtest
+                ports:
+                        - 80:80
+                links:
+                        - php
+                volumes:
+                        - /home/mihail/dockertest/www:/var/www
+        php:
+                image: macedigital/phpfpm
+                volumes:
+                        - /home/mihail/dockertest/www:/var/www
